@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite; 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class LoginController extends Controller
 {
@@ -81,17 +82,66 @@ class LoginController extends Controller
                 ]);
     
             // 🌟 CAMBIO AQUÍ: Forzamos la redirección directa a la ruta que creamos en web.php
-            return redirect('/dashboard');
+            return redirect('/inicio');
     
         } catch (\Exception $e) {
             // Si algo truena internamente, te regresará al login con un aviso
             return redirect('/login')->with('error', 'Hubo un problema al conectar con Google.');
         }
+
+
     }
 
     public function authenticated(Request $request, User $user){
         $device = $request->header('User-Agent');
         //$user->sessions()->create(['device'=> $device]);
-        return redirect()->intended('/dashboard');
+        return redirect()->intended('/inicio');
+
     }
+
+    public function redirectToGithub()
+{
+    return Socialite::driver('github')->redirect();
+}
+ 
+/*public function handleGithubCallback()
+{
+    $githubUser = Socialite::driver('github')->user();
+ 
+    $user = User::where('email', $githubUser->email)->first();
+ 
+    if (!$user) {
+ 
+        $user = User::create([
+            'name' => $githubUser->name ?? $githubUser->nickname,
+            'email' => $githubUser->email,
+            'password' => bcrypt('123456789')
+        ]);
+    }
+ 
+    Auth::login($user);
+ 
+    return redirect('/home');
+}*/
+
+public function handleGithubCallback()
+{
+    // Añadimos ->stateless() aquí
+    $githubUser = Socialite::driver('github')->stateless()->user();
+
+    $user = User::where('email', $githubUser->email)->first();
+
+    if (!$user) {
+        $user = User::create([
+            'name' => $githubUser->name ?? $githubUser->nickname,
+            'email' => $githubUser->email,
+            'password' => bcrypt('123456789') // Te recomiendo cambiar esto luego por Str::random(16)
+        ]);
+    }
+
+    // Recuerda iniciar sesión y redirigir para que no te dé el error anterior
+    auth()->login($user, true);
+    
+    return redirect('/inicio');
+}
 }
