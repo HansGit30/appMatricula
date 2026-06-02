@@ -18,7 +18,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <style>
-        :root {
+         :root {
             --primary-color: #0046f4;
             --secondary-color: #0c3e54;
             --white: #ffffff;
@@ -59,8 +59,7 @@
             color: var(--primary-color);
             padding-top: 10px;
         }
-
-        .logo-icon img {
+        .logo-icon img{
             width: 90px;
         }
 
@@ -210,198 +209,191 @@
         }
 
 
-        .auth-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 80vh;
-            padding: 20px;
-        }
+        .students-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 40px;
+    padding: 60px;
+}
 
-        .auth-card {
-            background: #fff;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
-        }
+.student-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+}
 
-        h2 {
-            margin-bottom: 5px;
-            color: #333;
-        }
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
 
-        .subtitle {
-            color: #888;
-            margin-bottom: 30px;
-            font-size: 0.9rem;
-        }
+.student-avatar {
+    width: 50px;
+    height: 50px;
+    background: blue; /* Color institucional */
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
 
-        .field {
-            margin-bottom: 20px;
-        }
+.status-badge {
+    margin-left: auto;
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: #e0f2f1;
+    color: #00796b;
+}
 
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #555;
-            font-size: 0.9rem;
-        }
+.card-body p { margin: 8px 0; color: #555; font-size: 0.9rem; }
 
-        input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #eee;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: 0.3s;
-            box-sizing: border-box;
-            /* Importante para que el padding no rompa el ancho */
-        }
+.card-footer {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
 
-        input:focus {
-            border-color: #004a99;
-            outline: none;
-        }
+button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+}
 
-        .auth-btn {
-            width: 100%;
-            padding: 14px;
-            background: #004a99;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: 0.3s;
-        }
+.btn-actii{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        .auth-btn:hover {
-            background: #003366;
-            transform: translateY(-2px);
-        }
+.btn-details { background: #f0f0f0; }
+.btn-acti { background: #ffc107;     width: 120px; }
+.btn-action { background: #ffc107; }
+.btn-action a{
+    
+    text-decoration: none;
+    color: black;
+}
+
+.btn-acti a{
+
+    margin-top: 20px;
+    
+    text-decoration: none;
+    color: black;
+}
 
 
+h1{
+    font-size: 70px;
 
-        /* Reutilizamos las clases que ya creamos para Registro */
-        .auth-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 80vh;
-            padding: 20px;
-        }
+}
 
-        .auth-card {
-            background: #fff;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
-        }
 
-        .field {
-            margin-bottom: 20px;
-        }
 
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #555;
-            font-size: 0.9rem;
-        }
+/* Centrado del contenedor */
+.form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
 
-        input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #eee;
-            border-radius: 10px;
-            box-sizing: border-box;
-        }
+h2 { margin-bottom: 20px; color: #333; text-align: center; }
 
-        input:focus {
-            border-color: #004a99;
-            outline: none;
-        }
+/* Grid para organizar los inputs */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
 
-        /* Estilos específicos para Login */
-        .social-auth {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
+.full-width { grid-column: span 2; }
 
-        .btn-social {
-            text-align: center;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            text-decoration: none;
-            color: #333;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
+.form-group { display: flex; flex-direction: column; }
 
-        .divider {
-            text-align: center;
-            color: #999;
-            font-size: 0.8rem;
-            margin-bottom: 20px;
-        }
+label { font-size: 0.9rem; margin-bottom: 5px; color: #555; font-weight: 600; }
 
-        .form-options {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85rem;
-            margin-bottom: 20px;
-        }
+input, select {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
 
-        .forgot-link {
-            color: #004a99;
-            text-decoration: none;
-        }
+input:focus { border-color: #004a99; outline: none; }
 
-        .auth-btn {
-            width: 100%;
-            padding: 14px;
-            background: #004a99;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+/* Botón estilo moderno */
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #004a99;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
 
-        /* Ajuste fino para los botones sociales con SVG */
-        .btn-social {
-            display: flex;
-            align-items: center;
-            /* Alineación vertical */
-            justify-content: center;
-            gap: 8px;
-            /* Espacio entre icono y texto */
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            text-decoration: none;
-            color: #333;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: 0.2s;
-        }
+.submit-btn:hover { background-color: #003366; }
 
-        .btn-social:hover {
-            background-color: #f1f1f1;
-            border-color: #999;
-        }
+/* Responsivo para móviles */
+@media (max-width: 600px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .full-width { grid-column: span 1; }
+}
+
+.hed{
+    margin-top: 100px;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 70px;    
+}
+.hed h1{
+    background-color: white;    
+}
+.hed button {
+    background-color: blue;
+}
+.hed button a{
+    text-decoration: none;
+    color: white;
+}
+
+/* Estilo para el botón de retroceso */
+.back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #666;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.back-link:hover {
+    color: #004a99;
+}
+
+/* El resto de estilos (form-container, form-grid, submit-btn) 
+   son los mismos que definimos en el paso anterior. */
+
     </style>
 
 </head>
@@ -428,10 +420,10 @@
                     @auth
                         @if (auth()->user()->email === 'olartemelohans224@gmail.com')
                             <a href="{{ route('alumno') }}">ALUMNOS</a>
-                            <a href="/ad">DOCENTES</a>
-                            <a href="/ad">CURSOS</a>
-                            <a href="/ad">HORARIOS</a>
-                            <a href="/ad">MATRICULA</a>
+                            <a href="{{ route('docente') }}">DOCENTES</a>
+                            <a href="{{ route('curso') }}">CURSOS</a>
+                            <a href="{{ route('horario') }}">HORARIOS</a>
+                            <a href="{{ route('matricula') }}">MATRICULA</a>
                         @elseif(str_ends_with(auth()->user()->email, '@docente.pe'))
                             <a href="/calificaciones">Subir Notas</a>
                         @else
@@ -440,7 +432,7 @@
                         @endif
                     @else
                         {{-- Opciones para cuando el usuario es invitado --}}
-                        <a href="{{ url('/') }}" class="active">INICIO</a>
+                        <a href="#" class="active">INICIO</a>
                         <a href="#">CARRERAS</a>
                         <a href="#">NOSOTROS</a>
                     @endauth
@@ -476,6 +468,7 @@
                 </div>
             </div>
         </nav>
+
 
         <main class="py-4">
             @yield('content')
