@@ -18,9 +18,6 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <style>
-        /* ==========================================
-   BARRA LATERAL CON SVG (ESTILO UNIVERSIDAD DE LIMA)
-   ========================================== */
         .social-sidebar-left {
             position: fixed;
             top: 0;
@@ -75,17 +72,13 @@
             /* Brilla al máximo */
         }
 
-        /* ==========================================
-   AJUSTE DE MÁRGENES EN TU SITIO
-   ========================================== */
-        /* Empuja tu contenido hacia la derecha para que la barra fija no cubra nada */
+
         .main-header,
         .hero-section {
             margin-left: 45px !important;
             width: calc(100% - 45px) !important;
         }
 
-        /* Desaparece en dispositivos móviles para optimizar la navegación */
         @media (max-width: 768px) {
             .social-sidebar-left {
                 display: none !important;
@@ -912,7 +905,17 @@
 
 
                     @auth
-                        @if (auth()->user()->email === 'olartemelohans224@gmail.com')
+                        {{-- Definimos la lista de correos autorizados como administradores --}}
+                        @php
+                            $admins = [
+                                'olartemelohans224@gmail.com',
+                                'aguirreantoni172@gmail.com',
+                                'derekgalarzasilva@gmail.com',
+                            ];
+                        @endphp
+
+                        @if (in_array(auth()->user()->email, $admins))
+                            {{-- Menú de Administrador --}}
                             <a href="{{ route('alumno') }}">ALUMNOS</a>
                             <a href="{{ route('docente') }}">DOCENTES</a>
                             <a href="{{ route('curso') }}">CURSOS</a>

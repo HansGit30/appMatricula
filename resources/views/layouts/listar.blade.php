@@ -459,17 +459,18 @@
             <div class="nav-container-right">
                 <div class="nav-menu">
 
-
                     @auth
+                        {{-- Definimos la lista de correos autorizados como administradores --}}
                         @php
                             $admins = [
                                 'olartemelohans224@gmail.com',
-                                'derekgalarzasilva@gmail.com',
                                 'aguirreantoni172@gmail.com',
+                                'derekgalarzasilva@gmail.com',
                             ];
                         @endphp
 
                         @if (in_array(auth()->user()->email, $admins))
+                            {{-- Menú de Administrador --}}
                             <a href="{{ route('alumno') }}">ALUMNOS</a>
                             <a href="{{ route('docente') }}">DOCENTES</a>
                             <a href="{{ route('curso') }}">CURSOS</a>
@@ -482,6 +483,7 @@
                             <a href="#">NOSOTROS</a>
                         @endif
                     @else
+                        {{-- Opciones para cuando el usuario es invitado --}}
                         <a href="#" class="active">INICIO</a>
                         <a href="#">CARRERAS</a>
                         <a href="#">NOSOTROS</a>
